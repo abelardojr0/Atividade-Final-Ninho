@@ -1,11 +1,14 @@
 import json
 import requests
 
-listaPokemon = [] # LISTA QUE VAI ARMAZENAR OS POKEMONS
+listaPokemon = []  # LISTA QUE VAI ARMAZENAR OS POKEMONS
 
-# CRIANDO O POKEMON 
+# CRIANDO O POKEMON
+
+
 class Pokemon:
-    def __init__(self,pokemon):
+    def __init__(self, pokemon):
+        # DADOS DO POKEMON
         self.nome = pokemon["name"]
         self.tipo = pokemon["types"][0]["type"]["name"]
         self.habilidade = pokemon["abilities"][0]["ability"]["name"]
@@ -17,19 +20,22 @@ class Pokemon:
         self.velocidade = pokemon["stats"][5]["base_stat"]
         self.altura = pokemon["height"]
         self.peso = pokemon["weight"]
-        
-        self.listaVantagens = json.loads(requests.get(pokemon["types"][0]["type"]["url"]).content)["damage_relations"]["double_damage_to"]
+
+        self.listaVantagens = json.loads(requests.get(pokemon["types"][0]["type"]["url"]).content)[
+            "damage_relations"]["double_damage_to"]
         self.vantagens = []
         for nome in self.listaVantagens:
             self.vantagens.append(nome["name"])
-            
-        self.listaDesvantagens = json.loads(requests.get(pokemon["types"][0]["type"]["url"]).content)["damage_relations"]["double_damage_from"]
+
+        self.listaDesvantagens = json.loads(requests.get(pokemon["types"][0]["type"]["url"]).content)[
+            "damage_relations"]["double_damage_from"]
         self.desvantagens = []
         for nome in self.listaDesvantagens:
             self.desvantagens.append(nome["name"])
-        
 
-#METODO DE EXIBIÇÃO DOS DADOS DO POKEMON
+
+# METODO DE EXIBIÇÃO DOS DADOS DO POKEMON
+
     def getPokemon(self):
         return f"""
     Nome: {self.nome}
@@ -46,33 +52,25 @@ class Pokemon:
     Vantagens: {self.nomesVantagens}
     Desvantagens: {self.nomesDesvantagens}"""
 
-#METODO DE ATAQUE
+# METODO DE ATAQUE
     def atacar(self):
-            print(f"O Pokemon {self.nome} atacou usando {self.habilidade}")
+        print(f"O Pokemon {self.nome} atacou usando {self.habilidade}")
 
-#buscando na API
-resultados = json.loads(requests.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=9").content)["results"]
 
-#JEITO MAIS VERBOSO PARA QUE EU ENTENDA O PROCESSO.
+# BUSCANDO API
+resultados = json.loads(requests.get(
+    "https://pokeapi.co/api/v2/pokemon?offset=0&limit=55").content)["results"]
+
+# JEITO MAIS VERBOSO PARA QUE EU ENTENDA O PROCESSO.
 # response = requests.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=9")
 # arquivoJson = json.loads(response.content)
 # resultados = arquivoJson["results"]
 
-for item in resultados:   
+# ENVIANDO OS DADOS RECEBIDOS DA API PARA CRIAR O POKEMON
+for item in resultados:
     listaPokemon.append(Pokemon(json.loads(requests.get(item["url"]).content)))
-    
-    #JEITO MAIS VERBOSO PARA QUE EU ENTENDA O PROCESSO.
+
+    # JEITO MAIS VERBOSO PARA QUE EU ENTENDA O PROCESSO.
     # resposePokemon = requests.get(pokemon["url"])
-    # pokemonJson = json.loads(resposePokemon.content) 
-    #listaPokemon.append(pokemonJson)
-
-
-# MOSTRAR OS DADOS DE TODOS OS POKEMONS
-# for pokemon in listaPokemon:
-#     print(pokemon.getPokemon())
-
-
-
-
-
-
+    # pokemonJson = json.loads(resposePokemon.content)
+    # listaPokemon.append(pokemonJson)

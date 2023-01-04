@@ -9,17 +9,13 @@ def duelar(jogador, inimigo):
     listaPokemonsInimigo = inimigo.listaPokemons
 
     print("Lista de Pokemons do Jogador:")
-    for i in range(len(listaPokemonsJogador)):  # LOOP POR TODOS OS POKEMONS DO JOGADOR
-        print(
-            f" {i} Nome: {listaPokemonsJogador[i].nome} | HP: {listaPokemonsJogador[i].hp} | Ataque: {listaPokemonsJogador[i].ataque} | Defesa: {listaPokemonsJogador[i].defesa}")
+    jogador.mostrarPokemons() #MOSTRAR POKEMONS DO JOGADOR
     pokemon1 = int(
         input("Escolha o pokemon do jogador digitando seu número: "))  # INPUT QUE VAI GUARDAR O POKEMON ESCOLHIDO PELO JOGADOR PARA A BATALHA
     print("\n")
 
     print("Lista de Pokemons do Inimigo:")
-    for i in range(len(listaPokemonsInimigo)):  # LOOP POR TODOS OS POKEMONS DO INIMIGO
-        print(
-            f" {i} Nome: {listaPokemonsInimigo[i].nome} | HP: {listaPokemonsInimigo[i].hp} | Ataque: {listaPokemonsInimigo[i].ataque} | Defesa: {listaPokemonsInimigo[i].defesa}")
+    inimigo.mostrarPokemons() #MOSTRAR POKEMONS DO INIMIGO
     pokemon2 = int(
         input("Escolha o pokemon do inimigo digitando seu número: "))  # INPUT QUE VAI GUARDAR O POKEMON ESCOLHIDO PELO INIMIGO PARA A BATALHA
 

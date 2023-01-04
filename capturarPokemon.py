@@ -1,26 +1,40 @@
 # FUNÇÃO DE CAPTURAR UM POKEMON SELVAGEM--------------------------------------------------------------------------------------------------------------------------------------------
 from batalha import batalhaPokemon  # IMPORTO A FUNÇÃO DE BATALHAR
 from pokemons import listaPokemon  # IMPORTO A LISTA COM TODOS OS POKEMONS
-
+from pokemons import listaPokemonsNivel1
+from pokemons import listaPokemonsNivel2
+from pokemons import listaPokemonsNivel3
 
 def capturar(jogador):
     print("Lista de Pokemons do Jogador:")
-    # LOOP QUE VAI MOSTRAR TODOS OS POKEMONS DO JOGADOR
-    for i in range(len(jogador.listaPokemons)):
-        print(
-            f" {i} Nome: {jogador.listaPokemons[i].nome} | HP: {jogador.listaPokemons[i].hp} | Ataque: {jogador.listaPokemons[i].ataque} | Defesa: {jogador.listaPokemons[i].defesa}")
-
-    pokemon1 = int(
+    jogador.mostrarPokemons() #MOSTRAR OS POKEMONS DO JOGADOR
+    pokemonJogador = int(
         input("Escolha o pokemon do jogador digitando seu número: "))  # INPUT PARA SABER QUAL POKEMON O JOGADOR ESCOLHEU
 
     print("\n")
 
-    print("Lista de pokemons disponiveis")
-    for i in range(len(listaPokemon)):  # LOOP QUE VAI MOSTRAR TODOS OS POKEMONS SELVAGENS
-        print(
-            f" {i} Nome: {listaPokemon[i].nome} | HP: {listaPokemon[i].hp} | Ataque: {listaPokemon[i].ataque} | Defesa: {listaPokemon[i].defesa}")
-    pokemon2 = int(
+
+    print("Lista de pokemons selvagens disponiveis")
+    if jogador.experiencia <=5:
+        for i in range(len(listaPokemonsNivel1)):
+            print(
+            f" {i} Nome: {listaPokemonsNivel1[i].nome} | HP: {listaPokemonsNivel1[i].hp} | Ataque: {listaPokemonsNivel1[i].ataque} | Defesa: {listaPokemonsNivel1[i].defesa}")
+    elif jogador.experiencia >=6 and jogador.experiencia <=10:
+        for i in range(len(listaPokemonsNivel2)):
+            print(
+            f" {i} Nome: {listaPokemonsNivel2[i].nome} | HP: {listaPokemonsNivel2[i].hp} | Ataque: {listaPokemonsNivel2[i].ataque} | Defesa: {listaPokemonsNivel2[i].defesa}")
+    elif jogador.experiencia > 10:
+        for i in range(len(listaPokemonsNivel3)):
+            print(
+            f" {i} Nome: {listaPokemonsNivel3[i].nome} | HP: {listaPokemonsNivel3[i].hp} | Ataque: {listaPokemonsNivel3[i].ataque} | Defesa: {listaPokemonsNivel3[i].defesa}")
+    pokemonSelvagem = int(
         input("Escolha o pokemon que quer capturar digitando seu número: "))  # INPUT QUE VAI SABER QUAL POKEMON SELVAGEM FOI ESCOLHIDO
 
-    batalhaPokemon(
-        jogador.listaPokemons[pokemon1], listaPokemon[pokemon2], "captura", jogador)  # CHAMO A FUNÇÃO DE BATALHA E PASSO OS DADOS EM QUESTÃO NO CASO, O POKEMON ESCOLHIDO PELO JOGADOR, O POKEMON SELVAGEM ESCOLHIDO, O MODO DA BATALHA E O JOGADOR
+
+# CHAMO A FUNÇÃO DE BATALHA E PASSO OS DADOS EM QUESTÃO NO CASO, O POKEMON ESCOLHIDO PELO JOGADOR, O POKEMON SELVAGEM ESCOLHIDO, O MODO DA BATALHA E O JOGADOR
+    if jogador.experiencia <=5:
+        batalhaPokemon(jogador.listaPokemons[pokemonJogador], listaPokemonsNivel1[pokemonSelvagem], "captura", jogador)
+    elif jogador.experiencia >=6 and jogador.experiencia <=10:
+        batalhaPokemon(jogador.listaPokemons[pokemonJogador], listaPokemonsNivel2[pokemonSelvagem], "captura", jogador)
+    elif jogador.experiencia > 10:
+        batalhaPokemon(jogador.listaPokemons[pokemonJogador], listaPokemonsNivel3[pokemonSelvagem], "captura", jogador) 

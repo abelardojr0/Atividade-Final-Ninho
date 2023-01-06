@@ -27,8 +27,7 @@ class Inimigo(Treinador):#OBJETO QUE VAI HERDAR A LISTA DO PAI E ADICIONAR CARAC
         self.nivel = nivel
         
 def adicionarPokemon(lista, pokemons, nivel): #FUNÇÃO PARA ADICIONAR POKEMONS A UMA LISTA
-    print(nivel)
-    if nivel <= 5:
+    if nivel <= 5: #CHECANDO O NIVEL DO JOGADOR PARA VER QUAL O NIVEL QUE VAI SER OS POKEMONS DOS INIMIGOS
         for pokemon in pokemons:
             lista.append(listaPokemonsNivel1[pokemon])
     elif nivel >=6 and nivel <=10:

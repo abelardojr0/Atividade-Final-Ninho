@@ -35,7 +35,7 @@ def batalhaPokemon(pokemonDoJogador, pokemonInimigo, modo, jogador):
 
         if (tentativaPokemonJogador > 0 and hpPokemonJogador > 0): # SE A TENTATIVA FOI BEM SUCEDIDA E O POKEMON ESTÁ VIVO ENTÃO...
             hpPokemonInimigo -= (pokemonDoJogador.ataque - (
-                pokemonInimigo.defesa * 0.65)) + modificadorVantagemPokemonJogador #A VIDA DO INIMIGO É DIMINUIDA PELA FÓRMULA DESCRITA
+                pokemonInimigo.defesa * 0.65)) + modificadorVantagemPokemonJogador + ( 5 * jogador.experiencia) #A VIDA DO INIMIGO É DIMINUIDA PELA FÓRMULA DESCRITA
             acertosPokemonJogador += 1
 
         if (tentativaPokemonInimigo > 0 and hpPokemonInimigo > 0):

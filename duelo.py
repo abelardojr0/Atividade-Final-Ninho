@@ -1,4 +1,5 @@
 # FUNÇÃO DE BATALHAR CONTRA OUTRO TREINADOR-------------------------------------------------------------------------------------------------------------------------------------------
+import random
 from batalha import batalhaPokemon  # IMPORTO A FUNÇÃO DE BATALHA
 
 
@@ -16,8 +17,6 @@ def duelar(jogador, inimigo):
 
     print("Lista de Pokemons do Inimigo:")
     inimigo.mostrarPokemons() #MOSTRAR POKEMONS DO INIMIGO
-    pokemon2 = int(
-        input("Escolha o pokemon do inimigo digitando seu número: "))  # INPUT QUE VAI GUARDAR O POKEMON ESCOLHIDO PELO INIMIGO PARA A BATALHA
-
+    pokemon2 = random.randint(0, 2)
     batalhaPokemon(listaPokemonsJogador[pokemon1],
                    listaPokemonsInimigo[pokemon2], "duelo", jogador)  # CHAMO A FUNÇÃO DE BATALHA E PASSO OS DADOS EM QUESTÃO NO CASO, O POKEMON ESCOLHIDO PELO JOGADOR, O POKEMON DO INIMIGO, O MODO DA BATALHA E O JOGADOR

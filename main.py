@@ -13,7 +13,7 @@ def cadastrarJogador(lista, nome, nivel): #CADASTRADOR DE JOGADOR
     pokemonsJogador = adicionarPokemon(listaPokemonsJogador, lista, nivel)  #CHAMANDO A FUNÇÃO ADICIONANDO OS POKEMONS ESCOLHIDOS PELO JOGADOR.
     jogador = Jogador(pokemonsJogador, nome, nivel) #CRIANDO O JOGADOR COM SUA LISTA DE POKEMONS, SEU NOME E SEU NÍVEL.
 
-def cadastrarInimigo(): #CADASTRAS O INIMIGO
+def cadastrarInimigo(): #CADASTRAr O INIMIGO
     global inimigo
     listaPokemonsInimigo = [] #ARRAY VAZIO QUE VAI SER PASSADO PARA SER PREENCHIDO
     fim = 0 #VARIAVEL QUE VAI GUARDAR O LIMITE MÁXIMO DO NÚMERO QUE VAI SER GERADO PARA BUSCAR NO ARRAY ALEATORIO DOS POKEMONS
@@ -44,7 +44,7 @@ for i in range(3): #CAPTURANDO AS ESCOLHAS
     opcao = int(input(f"Escolha seu {i+1} pokemon, digitando seu número: "))
     pokemonsEscolhidos.append(opcao)
     
-cadastrarJogador(pokemonsEscolhidos, nomeJogador, 11) #CADASTRANDO O JOGADOR COM OS POKEMONS ESCOLHIDOS E O NICKNAME ESCOLHIDO.
+cadastrarJogador(pokemonsEscolhidos, nomeJogador, 1) #CADASTRANDO O JOGADOR COM OS POKEMONS ESCOLHIDOS E O NICKNAME ESCOLHIDO.
 cadastrarInimigo()
 
 
